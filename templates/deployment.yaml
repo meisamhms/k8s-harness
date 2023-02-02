@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{.Values.name}}
+spec:
+  selector:
+    matchLabels:
+      app: sysinfo
+  replicas: {{.Values.replicas}}
+  template:
+    metadata:
+      labels:
+        app: sysinfo
+    spec:
+      containers:
+      - name: sysinfo
+        image: sysinfo:v1
+        ports:
+        - containerPort: 5000
